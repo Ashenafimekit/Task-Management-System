@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Management System
 
-## Getting Started
+## 📌 Overview
+This is a simple **Task Management System** built with **Next.js (App Router), React, TypeScript, Prisma, Zustand, TanStack Query, and SQLite**. Users can **add, edit, delete, and manage tasks** efficiently with a user-friendly interface.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+- **Add New Task** 🆕
+- **Edit Existing Task** ✏️
+- **Delete Task** ❌
+- **Task Status (Completed/Pending)** ✅❌
+- **Persistent Data Storage with Prisma & SQLite** 💾
+- **State Management using Zustand** 🎛️
+- **Optimized Data Fetching with TanStack Query** 🔄
+
+---
+
+## 🏗️ Tech Stack
+### **Frontend:**
+- **Next.js (App Router)**
+- **React with TypeScript**
+- **ShadCN UI (Component Library)**
+- **Tailwind CSS (Styling)**
+- **Zustand (State Management)**
+- **TanStack Query (Data Fetching & Caching)**
+
+### **Backend:**
+- **Next.js Server Actions/Functions**
+- **Prisma (ORM for Database Handling)**
+- **Zod (Schema Validation)**
+
+### **Database:**
+- **SQLite (Lightweight Embedded Database)**
+
+---
+
+## 📂 Folder Structure
+```
+my-app/
+│── prisma/                  # Prisma setup
+│   ├── migrations/          # Database migrations
+│   ├── schema.prisma        # Prisma schema
+│── public/                  # Static assets
+│── app/                     # Next.js App Router (main app directory)
+│   ├── api/tasks/           # API routes for tasks (CRUD operations)
+│   │   ├── route.ts         # GET & POST (Fetch & Create Tasks)
+│   │   ├── [id]/route.ts    # GET, PUT, DELETE (Manage single task)
+│   ├── page.tsx             # Main entry page
+│── components/              # UI Components
+│   ├── TaskList.tsx         # List all tasks
+│   ├── TaskForm.tsx         # Form to add/edit tasks
+│── hooks/                   # Custom Hooks
+│   ├── useTasks.ts          # Fetching tasks with React Query
+│── store/                   # Zustand State Management
+│   ├── useTaskStore.ts      # Task state management
+│── lib/                     # Helper utilities
+│   ├── prisma.ts            # Prisma client setup
+│   ├── validators.ts        # Zod validation schemas
+│── .env                     # Environment variables
+│── next.config.js           # Next.js configuration
+│── tailwind.config.js       # Tailwind CSS configuration
+│── tsconfig.json            # TypeScript configuration
+│── package.json             # Dependencies & Scripts
+│── README.md                # Documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Installation & Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/ashenafimekit/task-management-system.git
+cd task-management-system
+```
 
-## Learn More
+### 2️⃣ Install Dependencies
+```sh
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3️⃣ Set Up Prisma & Database
+```sh
+npx prisma migrate dev --name init
+npx prisma generate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4️⃣ Start the Development Server
+```sh
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
+This project is licensed under the **MIT License**.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📞 Contact
+For any questions, reach out via:
+- **Email:** ashumekit502@gmail.com
+- **LinkedIn:** [Ashenafi Mekit](https://www.linkedin.com/in/ashenafi-mekit)
+- **Portfolio:** [ashenafimekit.vercel.app](https://ashenafimekit.vercel.app)
+
