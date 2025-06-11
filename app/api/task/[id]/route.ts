@@ -13,30 +13,33 @@ const taskSchema = z.object({
 });
 
 export async function GET(
-  req: Request,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
+  const { id } = params;
+
   try {
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id: id },
     });
     if (!task) {
       return NextResponse.json({ error: "task not found" }, { status: 404 });
     }
     return NextResponse.json(task, { status: 200 });
   } catch (error) {
+    console.log("🚀 ~ error:", error);
     return NextResponse.json({ error: "Error fetching task" }, { status: 500 });
   }
 }
 
 export async function PUT(
-  req: Request,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
     const taskId = params.id;
 
-    const task = await req.json();
+    const task = await request.json();
 
     if (task.dueDate) {
       task.dueDate = new Date(task.dueDate);
@@ -68,7 +71,7 @@ export async function PUT(
 }
 
 export async function DELETE(
-  req: Request,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -77,6 +80,7 @@ export async function DELETE(
     });
     return NextResponse.json({ message: "task deleted" }, { status: 200 });
   } catch (error) {
+    console.log("🚀 ~ error:", error);
     return NextResponse.json({ message: "Task not found" }, { status: 400 });
   }
 }

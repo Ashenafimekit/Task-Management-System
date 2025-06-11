@@ -43,7 +43,7 @@ const getStatusStyle = (status: TaskStatus) => {
 
 const TaskTable = ({ data }: { data: Task[] }) => {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [pageSize, setPageSize] = useState(5);
+  const pageSize = 5;
   const [pageIndex, setPageIndex] = useState(0);
   const [globalFilter, setGlobalFilter] = useState("");
   const [editingTask, setEditingTask] = useState<Task | null>(null);

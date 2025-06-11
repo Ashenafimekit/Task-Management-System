@@ -1,12 +1,12 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
-const page = () => {
-  const { data: session, status } = useSession();
+const Page = () => {
+  const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const page = () => {
       router.push("/auth/signin");
     }
   }, [status, router]);
-
 
   return (
     <div className="flex flex-col items-center justify-center h-screen overflow-hidden">
@@ -25,4 +24,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

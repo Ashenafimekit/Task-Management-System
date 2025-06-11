@@ -45,11 +45,13 @@ const TaskModal = ({
       setTitle(task.title);
       setDescription(task.description || "");
       setStatus(task.status);
-      setDueDate(task.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : "");
+      setDueDate(
+        task.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : ""
+      );
     } else {
       setTitle("");
       setDescription("");
-      setStatus("ToDo"); 
+      setStatus("ToDo");
       setDueDate("");
     }
   }, [task]);
@@ -57,11 +59,11 @@ const TaskModal = ({
   const mutation = useMutation({
     mutationFn: async (data: Omit<Task, "id"> & { id?: string }) => {
       if (task?.id) {
-         const response = await axios.put(`/api/task/${String(task.id)}`, data);
-         return response.data;
+        const response = await axios.put(`/api/task/${String(task.id)}`, data);
+        return response.data;
       } else {
         const response = await axios.post("/api/task", data);
-        return response.data
+        return response.data;
       }
     },
     onSuccess: (data) => {
@@ -84,10 +86,11 @@ const TaskModal = ({
         title,
         description: description || null,
         status,
-        dueDate: dueDate ? new Date(dueDate) : null, 
-        id: task?.id ? String(task.id) : undefined, 
+        dueDate: dueDate ? new Date(dueDate) : null,
+        id: task?.id ? String(task.id) : undefined,
       });
-    } catch (error: any) {
+    } catch (error) {
+      console.log("🚀 ~ handleSubmit ~ error:", error);
       toast.error(error.errors[0].message);
     }
   };
@@ -117,16 +120,16 @@ const TaskModal = ({
               onChange={(e) => setDescription(e.target.value)}
             />
             <div className="flex flex-col">
-            <label >Status</label>
-            <select
-              value={status}
-              onChange={(e) => setStatus(e.target.value as Task["status"])}
-              className="border p-2 rounded"
-            >
-              <option value="ToDo">ToDo</option>
-              <option value="InProgress">InProgress</option>
-              <option value="Done">Done</option>
-            </select>
+              <label>Status</label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value as Task["status"])}
+                className="border p-2 rounded"
+              >
+                <option value="ToDo">ToDo</option>
+                <option value="InProgress">InProgress</option>
+                <option value="Done">Done</option>
+              </select>
             </div>
             <label>Due Date</label>
             <Input
@@ -147,7 +150,11 @@ const TaskModal = ({
               className="bg-blue-600 hover:bg-blue-500"
               disabled={mutation.isPending}
             >
-              {mutation.isPending ? "Saving..." : task ? "Update Task" : "Add Task"}
+              {mutation.isPending
+                ? "Saving..."
+                : task
+                ? "Update Task"
+                : "Add Task"}
             </Button>
           </DialogFooter>
         </form>

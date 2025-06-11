@@ -5,14 +5,14 @@ import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
+// import { useRouter } from "next/navigation";
+// import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
